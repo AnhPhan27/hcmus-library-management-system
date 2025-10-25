@@ -11,6 +11,7 @@ float giaSach[MAX_SACH];
 int soQuyen[MAX_SACH];
 int soLuongSach = 0;
 
+// Hiển thị menu quản lý sách và xử lý lựa chọn
 void menuSach() {
     int luaChon;
     do {
@@ -62,6 +63,7 @@ void menuSach() {
     } while(luaChon != 0);
 }
 
+// Hiển thị danh sách tất cả sách trong thư viện
 void xemDanhSachSach() {
     system("clear");
     cout << "\n===== DANH SACH SACH =====" << endl;
@@ -81,6 +83,7 @@ void xemDanhSachSach() {
     cin.ignore();
 }
 
+// Thêm sách mới vào thư viện
 void themSach() {
     system("clear");
     cout << "\n===== THEM SACH MOI =====" << endl;
@@ -145,6 +148,7 @@ void themSach() {
     cin.ignore();
 }
 
+// Chỉnh sửa thông tin sách theo ISBN
 void chinhSuaSach() {
     system("clear");
     cout << "\n===== CHINH SUA THONG TIN SACH =====" << endl;
@@ -200,6 +204,7 @@ void chinhSuaSach() {
     cin.ignore();
 }
 
+// Xóa sách khỏi thư viện theo ISBN
 void xoaSach() {
     system("clear");
     cout << "\n===== XOA SACH =====" << endl;
@@ -245,6 +250,7 @@ void xoaSach() {
     cin.ignore();
 }
 
+// Tìm sách theo mã ISBN chính xác
 void timSachTheoISBN() {
     system("clear");
     cout << "\n===== TIM SACH THEO ISBN =====" << endl;
@@ -265,6 +271,7 @@ void timSachTheoISBN() {
     cin.ignore();
 }
 
+// Tìm sách theo tên (tìm kiếm gần đúng)
 void timSachTheoTen() {
     system("clear");
     cout << "\n===== TIM SACH THEO TEN =====" << endl;
@@ -291,6 +298,7 @@ void timSachTheoTen() {
     cin.ignore();
 }
 
+// Tìm sách theo tác giả (tìm kiếm gần đúng)
 void timSachTheoTacGia() {
     system("clear");
     cout << "\n===== TIM SACH THEO TAC GIA =====" << endl;
@@ -317,6 +325,7 @@ void timSachTheoTacGia() {
     cin.ignore();
 }
 
+// Tìm vị trí của sách trong mảng theo ISBN, trả về -1 nếu không tìm thấy
 int timViTriSach(string isbnInput) {
     for(int i = 0; i < soLuongSach; i++) {
         if(ISBN[i] == isbnInput) {
@@ -326,6 +335,7 @@ int timViTriSach(string isbnInput) {
     return -1;
 }
 
+// Hiển thị thông tin chi tiết của sách tại vị trí index
 void hienThiThongTinSach(int index) {
     cout << "ISBN: " << ISBN[index] << endl;
     cout << "Ten sach: " << tenSach[index] << endl;
@@ -338,6 +348,7 @@ void hienThiThongTinSach(int index) {
     cout << "--------------------------------" << endl;
 }
 
+// Kiểm tra sách có sẵn để mượn (tồn tại và còn số lượng > 0)
 bool kiemTraSachCoSan(string isbnInput) {
     int index = timViTriSach(isbnInput);
     if(index != -1 && soQuyen[index] > 0) {
@@ -346,6 +357,7 @@ bool kiemTraSachCoSan(string isbnInput) {
     return false;
 }
 
+// Giảm số lượng sách đi 1 (khi mượn sách)
 void giamSoLuongSach(string isbnInput) {
     int index = timViTriSach(isbnInput);
     if(index != -1 && soQuyen[index] > 0) {
@@ -353,6 +365,7 @@ void giamSoLuongSach(string isbnInput) {
     }
 }
 
+// Tăng số lượng sách lên 1 (khi trả sách)
 void tangSoLuongSach(string isbnInput) {
     int index = timViTriSach(isbnInput);
     if(index != -1) {
@@ -360,6 +373,7 @@ void tangSoLuongSach(string isbnInput) {
     }
 }
 
+// Cập nhật số lượng sách theo số lượng thay đổi (+ hoặc -)
 bool capNhatSoLuongSach(string isbn_input, int soLuongThayDoi) {
     int index = timViTriSach(isbn_input);
     if(index != -1) {

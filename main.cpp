@@ -63,53 +63,53 @@ void hienThiMenuChinh() {
 void khoiTaoDuLieuMau() {
     if(soLuongDocGia == 0) {
         maDocGia[0] = "DG001";
-        hoTen[0] = "Nguyen Van A";
-        cmnd[0] = "123456789";
-        ngaySinh[0] = "01/01/1990";
+        hoTen[0] = "Phan Duc Anh";
+        cmnd[0] = "092095004492";
+        ngaySinh[0] = "27/12/1995";
         gioiTinh[0] = "Nam";
-        email[0] = "nguyenvana@email.com";
-        diaChi[0] = "Ha Noi";
-        ngayLapThe[0] = "01/01/2024";
-        ngayHetHan[0] = "01/01/2028";
+        email[0] = "ducanh271295@gmail.com";
+        diaChi[0] = "Can Tho";
+        ngayLapThe[0] = "25/10/2025";
+        ngayHetHan[0] = "24/10/2028";
         
         maDocGia[1] = "DG002";
-        hoTen[1] = "Tran Thi B";
-        cmnd[1] = "987654321";
-        ngaySinh[1] = "15/05/1995";
+        hoTen[1] = "Nguyen Thanh Ngan";
+        cmnd[1] = "0123456789";
+        ngaySinh[1] = "21/04/1999";
         gioiTinh[1] = "Nu";
-        email[1] = "tranthib@email.com";
+        email[1] = "sarangan@email.com";
         diaChi[1] = "Ho Chi Minh";
-        ngayLapThe[1] = "15/01/2024";
-        ngayHetHan[1] = "15/01/2028";
+        ngayLapThe[1] = "25/10/2025";
+        ngayHetHan[1] = "24/10/2028";
         
         soLuongDocGia = 2;
     }
     
     if(soLuongSach == 0) {
         ISBN[0] = "978-604-1-12345-1";
-        tenSach[0] = "Lap trinh C++ co ban";
-        tacGia[0] = "Nguyen Van X";
-        nhaXuatBan[0] = "NXB Giao duc";
+        tenSach[0] = "Nhap mon lap trinh";
+        tacGia[0] = "Tran Dan Thư";
+        nhaXuatBan[0] = "NXB Truong DHKHTN";
         namXuatBan[0] = 2023;
         theLoai[0] = "Cong nghe thong tin";
         giaSach[0] = 150000;
         soQuyen[0] = 5;
         
         ISBN[1] = "978-604-1-12345-2";
-        tenSach[1] = "Cau truc du lieu va giai thuat";
-        tacGia[1] = "Tran Van Y";
-        nhaXuatBan[1] = "NXB Khoa hoc";
+        tenSach[1] = "Toi Thay Hoa Vang Tren Co Xanh";
+        tacGia[1] = "Nguyen Nhat Anh";
+        nhaXuatBan[1] = "NXB Tre";
         namXuatBan[1] = 2022;
-        theLoai[1] = "Cong nghe thong tin";
+        theLoai[1] = "Van hoc";
         giaSach[1] = 200000;
         soQuyen[1] = 3;
         
         ISBN[2] = "978-604-1-12345-3";
-        tenSach[2] = "Toan cao cap";
-        tacGia[2] = "Le Van Z";
-        nhaXuatBan[2] = "NXB Dai hoc";
+        tenSach[2] = "Rung Na Uy";
+        tacGia[2] = "Haruki Murakami";
+        nhaXuatBan[2] = "Nha Nam";
         namXuatBan[2] = 2021;
-        theLoai[2] = "Toan hoc";
+        theLoai[2] = "Van hoc";
         giaSach[2] = 180000;
         soQuyen[2] = 7;
         

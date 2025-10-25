@@ -1,5 +1,6 @@
 #include "thongke.h"
 
+// Hiển thị menu thống kê và xử lý lựa chọn
 void menuThongKe() {
     int luaChon;
     do {
@@ -31,6 +32,7 @@ void menuThongKe() {
     } while(luaChon != 0);
 }
 
+// Hiển thị thống kê tổng quan hệ thống (số sách, độc giả, phiếu mượn)
 void thongKeTongQuan() {
     system("clear");
     cout << "\n===== THONG KE TONG QUAN =====" << endl;
@@ -43,6 +45,7 @@ void thongKeTongQuan() {
     cin.ignore();
 }
 
+// Thống kê số lượng sách theo từng thể loại
 void thongKeSachTheoTheLoai() {
     system("clear");
     cout << "\n===== THONG KE SACH THEO THE LOAI =====" << endl;
@@ -76,18 +79,22 @@ void thongKeSachTheoTheLoai() {
     cin.ignore();
 }
 
+// Thống kê số lượng độc giả theo giới tính (Nam/Nữ)
 void thongKeDocGiaTheoGioiTinh() {
     cout << "Chua thuc hien" << endl;
 }
 
+// Thống kê tình trạng mượn sách (đã trả, chưa trả, quá hạn)
 void thongKeTinhTrangMuonSach() {
     cout << "Chua thuc hien" << endl;
 }
 
+// Thống kê top 5 sách được mượn nhiều nhất
 void thongKeTop5SachMuonNhieu() {
     cout << "Chua thuc hien" << endl;
 }
 
+// Thống kê tổng doanh thu từ tiền phạt (trễ hạn, mất sách)
 void thongKeDoanhThuPhat() {
     cout << "Chua thuc hien" << endl;
 }
