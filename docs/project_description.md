@@ -1,124 +1,67 @@
 
-# 📘 ĐỒ ÁN 1 – QUẢN LÝ THƯ VIỆN (Library Manager)
+# ĐỒ ÁN 1 – QUẢN LÝ THƯ VIỆN
 
 **Môn:** Nhập môn lập trình  
 **Trường:** Đại học Khoa học Tự nhiên – Khoa CNTT  
-**Giảng viên:** Phạm Minh Tuấn  
 
----
+## Yêu cầu kỹ thuật
 
-## ⚙️ Yêu cầu kỹ thuật
+### Công nghệ sử dụng
+- Chương trình console với menu lựa chọn
+- Chỉ sử dụng kiểu dữ liệu cơ bản và mảng 1 chiều
+- Không dùng struct, class, vector, map, file I/O, STL
+- Không lưu dữ liệu xuống file
 
-### 🔧 Công nghệ sử dụng
-- Chương trình chạy **trên console** dạng **menu lựa chọn**
-- **Chỉ sử dụng:**
-  - Kiểu dữ liệu cơ bản (`int`, `float`, `string`, `char`, `bool`)
-  - **Mảng 1 chiều** để lưu dữ liệu
-- **Không được dùng:**
-  - `struct`, `class`, `vector`, `map`, `file I/O`, `STL`
-- **Không cần lưu trữ dữ liệu xuống file**
+### Cấu trúc mã nguồn
+- Mỗi chức năng viết trong hàm riêng với comment
+- Tách file: main.cpp, docgia.cpp/.h, sach.cpp/.h, muontra.cpp/.h, thongke.cpp/.h
 
-### 📁 Cấu trúc mã nguồn
-- **Mỗi chức năng phải được viết trong hàm riêng** với comment rõ ràng:
-  - Mục đích của hàm
-  - Tham số truyền vào  
-  - Giá trị trả về
-- **Tách file hợp lý:**
-  ```
-  main.cpp
-  ├── docgia.cpp/.h
-  ├── sach.cpp/.h
-  ├── muontra.cpp/.h
-  └── thongke.cpp/.h
-  ```
+## Mô tả bài toán
 
----
+### Quản lý thông tin
+Chương trình quản lý 3 loại dữ liệu:
 
-## 📚 Mô tả bài toán
+#### Độc giả
+- Mã độc giả, họ tên, CMND, năm sinh, giới tính, email, địa chỉ
+- Ngày lập thẻ, ngày hết hạn thẻ (+ 48 tháng)
 
-### 🗃️ Quản lý thông tin
-Chương trình quản lý 3 loại dữ liệu chính:
+#### Sách  
+- ISBN, tên sách, tác giả, nhà xuất bản, năm xuất bản
+- Thể loại, giá sách, số lượng
 
-#### � Độc giả (Reader)
-- Mã độc giả
-- Họ tên
-- CMND
-- Ngày tháng năm sinh
-- Giới tính
-- Email
-- Địa chỉ
-- Ngày lập thẻ
-- Ngày hết hạn thẻ = Ngày lập thẻ + 48 tháng
+#### Phiếu mượn/trả
+- Mã độc giả, ngày mượn, ngày trả dự kiến (7 ngày)
+- Ngày trả thực tế, danh sách ISBN
 
-#### � Sách (Book)
-- ISBN (mã sách)
-- Tên sách
-- Tác giả
-- Nhà xuất bản
-- Năm xuất bản
-- Thể loại
-- Giá sách
-- Số lượng quyển
+#### Quy định phạt
+- Trễ hạn: 5,000 VNĐ/ngày
+- Mất sách: 200% giá sách
 
-#### � Phiếu mượn/trả sách
-- Mã độc giả
-- Ngày mượn
-- Ngày trả dự kiến (tối đa 7 ngày)
-- Ngày trả thực tế
-- Danh sách ISBN các sách được mượn
+## Các chức năng chính
 
-#### 💰 Quy định phạt
-- **Trễ hạn:** 5.000 VNĐ/ngày
-- **Mất sách:** 200% giá sách
+### 1. Quản lý độc giả
+- Xem danh sách, thêm, sửa, xóa độc giả
+- Tìm theo CMND và họ tên
 
----
+### 2. Quản lý sách
+- Xem danh sách, thêm, sửa, xóa sách
+- Tìm theo ISBN và tên sách
 
-## 🧱 Các chức năng chính
+### 3. Lập phiếu mượn sách
+- Chọn độc giả và danh sách sách cần mượn
+- Tính ngày trả dự kiến, giảm số lượng sách
 
-### 1️⃣ Quản lý độc giả
-| Chức năng | Mô tả |
-|-----------|-------|
-| **Xem danh sách** | Hiển thị toàn bộ độc giả |
-| **Thêm độc giả** | Nhập thông tin mới, lưu vào mảng |
-| **Chỉnh sửa** | Tìm và cập nhật thông tin độc giả |
-| **Xóa độc giả** | Xóa phần tử trong mảng |
-| **Tìm theo CMND** | Duyệt mảng CMND |
-| **Tìm theo họ tên** | Duyệt và so sánh chuỗi |
-
-### 2️⃣ Quản lý sách
-| Chức năng | Mô tả |
-|-----------|-------|
-| **Xem danh sách** | Hiển thị toàn bộ sách |
-| **Thêm sách** | Nhập dữ liệu mới |
-| **Chỉnh sửa** | Tìm và sửa thông tin sách |
-| **Xóa sách** | Xóa phần tử khỏi mảng |
-| **Tìm theo ISBN** | Duyệt mảng ISBN |
-| **Tìm theo tên** | Duyệt mảng tên sách |
-
-### 3️⃣ Lập phiếu mượn sách
-- Chọn mã độc giả, nhập danh sách ISBN cần mượn
-- Ghi ngày mượn, tính ngày trả dự kiến
-- Giảm số lượng sách tương ứng
-
-### 4️⃣ Lập phiếu trả sách
-- Nhập mã độc giả, ngày trả thực tế
-- Tính số ngày trễ, phạt 5.000đ/ngày nếu có
-- Nếu mất sách: phạt 200% giá
+### 4. Lập phiếu trả sách
+- Nhập thông tin trả sách
+- Tính phạt trễ hạn hoặc mất sách
 - Cập nhật lại số lượng sách
 
-### 5️⃣ Thống kê
-| Nội dung | Cách tính |
-|----------|-----------|
-| **Tổng số sách** | Tổng `soLuong[i]` |
-| **Sách theo thể loại** | Đếm theo `theLoai` |
-| **Tổng số độc giả** | Biến `soLuongDocGia` |
-| **Độc giả theo giới tính** | Đếm `Nam`, `Nữ` |
-| **Sách đang mượn** | Tổng mượn – đã trả |
-| **Độc giả trễ hạn** | So sánh ngày trả |
+### 5. Thống kê
+- Tổng số sách và độc giả
+- Thống kê theo thể loại và giới tính
+- Sách đang mượn, độc giả trễ hạn
 
----
-
-## 🧮 Menu chương trình
+## Menu chương trình
 
 ```
 ===== QUẢN LÝ THƯ VIỆN =====
@@ -131,16 +74,7 @@ Chương trình quản lý 3 loại dữ liệu chính:
 Chọn chức năng: _
 ```
 
----
-
-## 💻 Công cụ phát triển
-- **Ngôn ngữ:** C++ (Console App)
-- **IDE:** Visual Studio / Code::Blocks
-- **Yêu cầu:** Không sử dụng thư viện ngoài
-
----
-
-## 💬 7. Gợi ý công cụ
-- Ngôn ngữ: **C++ (Console App)**  
-- IDE: **Visual Studio / Code::Blocks**  
-- Không dùng thư viện ngoài.
+## Công cụ phát triển
+- Ngôn ngữ: C++ (Console App)
+- IDE: Visual Studio / Code::Blocks
+- Không sử dụng thư viện ngoài
