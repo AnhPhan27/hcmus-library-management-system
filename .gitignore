@@ -1,0 +1,16 @@
+# Build artifacts
+*.o
+library_manager
+
+# Build directory  
+build/
+
+# VS Code
+.vscode/settings.json
+
+# macOS
+.DS_Store
+
+# Temporary files
+*~
+*.tmp
