@@ -31,12 +31,10 @@ void muonSach();
 void traSach();
 
 // Tìm kiếm và báo cáo
-void timPhieuMuonTheoDocGia();
-void xemSachQuaHan();
+// (Một số hàm tìm kiếm/báo cáo tạm thời được loại bỏ nếu không dùng)
 
 // Hàm tiện ích
 string tinhNgayTraDuKien(string ngayMuon);
 float tinhTienPhat(string ngayTraDuKien, string ngayTraThucTe);
-int soSanhNgay(string ngay1, string ngay2);
 
 #endif

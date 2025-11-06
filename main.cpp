@@ -70,7 +70,7 @@ void khoiTaoDuLieuMau() {
         email[0] = "ducanh271295@gmail.com";
         diaChi[0] = "Can Tho";
         ngayLapThe[0] = "25/10/2025";
-        ngayHetHan[0] = "24/10/2028";
+        ngayHetHan[0] = "24/10/2029";
         
         maDocGia[1] = "DG002";
         hoTen[1] = "Nguyen Thanh Ngan";
@@ -80,7 +80,7 @@ void khoiTaoDuLieuMau() {
         email[1] = "sarangan@email.com";
         diaChi[1] = "Ho Chi Minh";
         ngayLapThe[1] = "25/10/2025";
-        ngayHetHan[1] = "24/10/2028";
+        ngayHetHan[1] = "24/10/2029";
         
         soLuongDocGia = 2;
     }
@@ -114,5 +114,30 @@ void khoiTaoDuLieuMau() {
         soQuyen[2] = 7;
         
         soLuongSach = 3;
+    }
+    
+    if(soLuongPhieu == 0) {
+        maPhieuMuon[0] = "PM001";
+        maDocGiaMuon[0] = "DG001";
+        ISBNMuon[0] = "978-604-1-12345-1";
+        ngayMuon[0] = "15/10/2025";
+        ngayTraDuKien[0] = tinhNgayTraDuKien("15/10/2025"); 
+        ngayTraThucTe[0] = "25/10/2025"; 
+        
+        maPhieuMuon[1] = "PM002";
+        maDocGiaMuon[1] = "DG002";
+        ISBNMuon[1] = "978-604-1-12345-2";
+        ngayMuon[1] = "01/10/2025";
+        ngayTraDuKien[1] = tinhNgayTraDuKien("01/10/2025"); 
+        ngayTraThucTe[1] = "15/11/2025"; 
+        
+        maPhieuMuon[2] = "PM003";
+        maDocGiaMuon[2] = "DG001";
+        ISBNMuon[2] = "978-604-1-12345-3";
+        ngayMuon[2] = "20/10/2025";
+        ngayTraDuKien[2] = tinhNgayTraDuKien("20/10/2025"); 
+        ngayTraThucTe[2] = ""; 
+        
+        soLuongPhieu = 3;
     }
 }

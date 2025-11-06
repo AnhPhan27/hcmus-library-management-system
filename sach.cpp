@@ -22,8 +22,7 @@ void menuSach() {
         cout << "3. Chinh sua thong tin sach" << endl;
         cout << "4. Xoa sach" << endl;
         cout << "5. Tim sach theo ISBN" << endl;
-        cout << "6. Tim sach theo ten" << endl;
-        cout << "7. Tim sach theo tac gia" << endl;
+    cout << "6. Tim sach theo ten" << endl;
         cout << "0. Quay lai menu chinh" << endl;
         cout << "=========================" << endl;
         cout << "Nhap lua chon: ";
@@ -49,9 +48,6 @@ void menuSach() {
             case 6:
                 timSachTheoTen();
                 break;
-            case 7:
-                timSachTheoTacGia();
-                break;
             case 0:
                 cout << "Quay lai menu chinh..." << endl;
                 break;
@@ -71,7 +67,6 @@ void xemDanhSachSach() {
     if(soLuongSach == 0) {
         cout << "Khong co sach nao trong thu vien!" << endl;
     } else {
-        cout << "Tong so sach: " << soLuongSach << endl;
         cout << "--------------------------------" << endl;
         
         for(int i = 0; i < soLuongSach; i++) {
@@ -299,31 +294,7 @@ void timSachTheoTen() {
 }
 
 // Tìm sách theo tác giả (tìm kiếm gần đúng)
-void timSachTheoTacGia() {
-    system("clear");
-    cout << "\n===== TIM SACH THEO TAC GIA =====" << endl;
-    
-    string tacGiaTimKiem;
-    cout << "Nhap ten tac gia can tim: ";
-    getline(cin, tacGiaTimKiem);
-    
-    bool timThay = false;
-    cout << "Ket qua tim kiem:" << endl;
-    
-    for(int i = 0; i < soLuongSach; i++) {
-        if(tacGia[i].find(tacGiaTimKiem) != string::npos) {
-            hienThiThongTinSach(i);
-            timThay = true;
-        }
-    }
-    
-    if(!timThay) {
-        cout << "Khong tim thay sach cua tac gia: " << tacGiaTimKiem << endl;
-    }
-    
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
-}
+// (Tìm sách theo tác giả đã bị loại bỏ theo yêu cầu)
 
 // Tìm vị trí của sách trong mảng theo ISBN, trả về -1 nếu không tìm thấy
 int timViTriSach(string isbnInput) {

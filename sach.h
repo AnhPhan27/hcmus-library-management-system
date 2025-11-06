@@ -34,7 +34,6 @@ void xoaSach();
 // Tìm kiếm sách
 void timSachTheoISBN();
 void timSachTheoTen();
-void timSachTheoTacGia();
 int timViTriSach(string ma);
 
 // Quản lý số lượng sách
