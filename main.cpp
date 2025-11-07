@@ -7,6 +7,7 @@ using namespace std;
 #include "sach.h"
 #include "muontra.h"
 #include "thongke.h"
+#include "utils.h"
 
 void hienThiMenuChinh();
 void khoiTaoDuLieuMau();
@@ -17,9 +18,9 @@ int main() {
     int luaChon;
     do {
         hienThiMenuChinh();
-        cout << "Nhap lua chon: ";
-        cin >> luaChon;
-        cin.ignore();
+    cout << "Nhap lua chon: ";
+    cin >> luaChon;
+    discardLine();
         
         switch(luaChon) {
             case 1:
@@ -39,8 +40,7 @@ int main() {
                 break;
             default:
                 cout << "Lua chon khong hop le!" << endl;
-                cout << "Nhan Enter de tiep tuc...";
-                cin.ignore();
+                waitForEnter();
         }
     } while(luaChon != 0);
     
@@ -88,7 +88,7 @@ void khoiTaoDuLieuMau() {
     if(soLuongSach == 0) {
         ISBN[0] = "978-604-1-12345-1";
         tenSach[0] = "Nhap mon lap trinh";
-        tacGia[0] = "Tran Dan Thư";
+        tacGia[0] = "Tran Dan Thu";
         nhaXuatBan[0] = "NXB Truong DHKHTN";
         namXuatBan[0] = 2023;
         theLoai[0] = "Cong nghe thong tin";

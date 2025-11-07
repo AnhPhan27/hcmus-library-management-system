@@ -1,4 +1,5 @@
 #include "thongke.h"
+#include "utils.h"
 
 // Hiển thị menu thống kê và xử lý lựa chọn
 void menuThongKe() {
@@ -14,9 +15,9 @@ void menuThongKe() {
         cout << "6. Danh sach doc gia bi tre han" << endl;
         cout << "0. Quay lai menu chinh" << endl;
         cout << "====================" << endl;
-        cout << "Nhap lua chon: ";
-        cin >> luaChon;
-        cin.ignore();
+    cout << "Nhap lua chon: ";
+    cin >> luaChon;
+    discardLine();
         
         switch(luaChon) {
             case 1:
@@ -28,8 +29,7 @@ void menuThongKe() {
             case 3:
                 cout << "\n===== THONG KE DOC GIA =====" << endl;
                 cout << "Tong so doc gia: " << soLuongDocGia << endl;
-                cout << "Nhan Enter de tiep tuc...";
-                cin.ignore();
+                waitForEnter();
                 break;
             case 4:
                 thongKeDocGiaTheoGioiTinh();
@@ -45,8 +45,7 @@ void menuThongKe() {
                 break;
             default:
                 cout << "Lua chon khong hop le!" << endl;
-                cout << "Nhan Enter de tiep tuc...";
-                cin.ignore();
+                waitForEnter();
         }
     } while(luaChon != 0);
 }
@@ -63,8 +62,7 @@ void thongKeTongQuan() {
     cout << "Tong so doc gia: " << soLuongDocGia << endl;
     cout << "Tong so phieu muon: " << soLuongPhieu << endl;
     
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
+    waitForEnter();
 }
 
 // Thống kê số lượng sách theo từng thể loại
@@ -104,8 +102,7 @@ void thongKeSachTheoTheLoai() {
              << " - So luong (quyen): " << soLuongTheoTheLoai[i] << endl;
     }
     
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
+    waitForEnter();
 }
 
 // Thống kê số lượng độc giả theo giới tính (Nam/Nữ)
@@ -127,8 +124,7 @@ void thongKeDocGiaTheoGioiTinh() {
     cout << "Tong so doc gia: " << soLuongDocGia << endl;
     cout << "So doc gia nam: " << soDocGiaNam << endl;
     cout << "So doc gia nu: " << soDocGiaNu << endl;    
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
+    waitForEnter();
 }
 
 // Thống kê số sách đang được mượn (dựa trên số phiếu chưa trả)
@@ -143,8 +139,7 @@ void thongKeSoSachDangMuon() {
         }
     }
     cout << "So sach dang duoc muon (so phieu chua tra): " << soSachDangMuon << endl;
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
+    waitForEnter();
 }
 
 

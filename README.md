@@ -39,4 +39,8 @@ g++ -std=c++11 -Wall -o library_manager *.cpp
 - Menu gồm: quản lý độc giả, quản lý sách, mượn/trả, thống kê, thoát.
 - Hạn mượn mặc định: 7 ngày. Phạt trễ: 5,000 VND/ngày.
 
+## Liên kết
+
+- GitHub: https://github.com/AnhPhan27/hcmus-library-management-system
+
 

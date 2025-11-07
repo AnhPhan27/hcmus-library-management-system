@@ -1,4 +1,5 @@
 #include "docgia.h"
+#include "utils.h"
 
 // Định nghĩa mảng toàn cục cho độc giả
 string maDocGia[MAX_DOCGIA];
@@ -11,6 +12,8 @@ string diaChi[MAX_DOCGIA];
 string ngayLapThe[MAX_DOCGIA];
 string ngayHetHan[MAX_DOCGIA];
 int soLuongDocGia = 0;
+// Khởi tạo mảng tiền nợ/phạt cho mỗi độc giả
+float tienNo[MAX_DOCGIA];
 
 void menuDocGia() {
     int luaChon;
@@ -27,7 +30,7 @@ void menuDocGia() {
         cout << "==============================" << endl;
         cout << "Nhap lua chon: ";
         cin >> luaChon;
-        cin.ignore();
+        discardLine();
         
         switch(luaChon) {
             case 1:
@@ -54,7 +57,7 @@ void menuDocGia() {
             default:
                 cout << "Lua chon khong hop le!" << endl;
                 cout << "Nhan Enter de tiep tuc...";
-                cin.ignore();
+                waitForEnter();
         }
     } while(luaChon != 0);
 }
@@ -74,8 +77,7 @@ void xemDanhSachDocGia() {
         }
     }
     
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
+    waitForEnter();
 }
 
 void themDocGia() {
@@ -85,7 +87,7 @@ void themDocGia() {
     if(soLuongDocGia >= MAX_DOCGIA) {
         cout << "He thong da day! Khong the them doc gia moi." << endl;
         cout << "Nhan Enter de tiep tuc...";
-        cin.ignore();
+        waitForEnter();
         return;
     }
     
@@ -97,7 +99,7 @@ void themDocGia() {
     if(timViTriDocGia(ma) != -1) {
         cout << "Ma doc gia da ton tai!" << endl;
         cout << "Nhan Enter de tiep tuc...";
-        cin.ignore();
+        waitForEnter();
         return;
     }
     
@@ -131,12 +133,12 @@ void themDocGia() {
     diaChi[soLuongDocGia] = diaChiInput;
     ngayLapThe[soLuongDocGia] = ngayLapInput;
     ngayHetHan[soLuongDocGia] = tinhNgayHetHan(ngayLapInput);
+    tienNo[soLuongDocGia] = 0.0f; // ban dau khong co no
     
     soLuongDocGia++;
     
     cout << "Them doc gia thanh cong!" << endl;
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
+    waitForEnter();
 }
 
 void chinhSuaDocGia() {
@@ -150,8 +152,7 @@ void chinhSuaDocGia() {
     int index = timViTriDocGia(ma);
     if(index == -1) {
         cout << "Khong tim thay doc gia co ma: " << ma << endl;
-        cout << "Nhan Enter de tiep tuc...";
-        cin.ignore();
+        waitForEnter();
         return;
     }
     
@@ -186,8 +187,7 @@ void chinhSuaDocGia() {
     if(!input.empty()) diaChi[index] = input;
     
     cout << "Cap nhat thong tin thanh cong!" << endl;
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
+    waitForEnter();
 }
 
 void xoaDocGia() {
@@ -201,8 +201,7 @@ void xoaDocGia() {
     int index = timViTriDocGia(ma);
     if(index == -1) {
         cout << "Khong tim thay doc gia co ma: " << ma << endl;
-        cout << "Nhan Enter de tiep tuc...";
-        cin.ignore();
+        waitForEnter();
         return;
     }
     
@@ -224,6 +223,7 @@ void xoaDocGia() {
             diaChi[i] = diaChi[i + 1];
             ngayLapThe[i] = ngayLapThe[i + 1];
             ngayHetHan[i] = ngayHetHan[i + 1];
+            tienNo[i] = tienNo[i + 1];
         }
         soLuongDocGia--;
         cout << "Xoa doc gia thanh cong!" << endl;
@@ -231,9 +231,7 @@ void xoaDocGia() {
         cout << "Huy bo thao tac xoa." << endl;
     }
     
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
-    cin.ignore();
+    waitForEnter();
 }
 
 void timDocGiaTheoCMND() {
@@ -258,8 +256,7 @@ void timDocGiaTheoCMND() {
         cout << "Khong tim thay doc gia co CMND: " << cmndTimKiem << endl;
     }
     
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
+    waitForEnter();
 }
 
 void timDocGiaTheoHoTen() {
@@ -284,8 +281,7 @@ void timDocGiaTheoHoTen() {
         cout << "Khong tim thay doc gia co ho ten chua: " << tenTimKiem << endl;
     }
     
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
+    waitForEnter();
 }
 
 string tinhNgayHetHan(string ngayLap) {
@@ -316,5 +312,6 @@ void hienThiThongTinDocGia(int index) {
     cout << "Dia chi: " << diaChi[index] << endl;
     cout << "Ngay lap the: " << ngayLapThe[index] << endl;
     cout << "Ngay het han: " << ngayHetHan[index] << endl;
+    cout << "Tien no/phat: " << tienNo[index] << " VND" << endl;
     cout << "--------------------------------" << endl;
 }

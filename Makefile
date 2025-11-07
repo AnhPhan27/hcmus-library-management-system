@@ -8,7 +8,7 @@ CXXFLAGS = -std=c++11 -Wall -Wextra -g
 TARGET = library_manager
 
 # Source files
-SOURCES = main.cpp docgia.cpp sach.cpp muontra.cpp thongke.cpp
+SOURCES = main.cpp docgia.cpp sach.cpp muontra.cpp thongke.cpp utils.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 # Default target
@@ -56,4 +56,5 @@ main.o: main.cpp docgia.h sach.h muontra.h thongke.h
 docgia.o: docgia.cpp docgia.h
 sach.o: sach.cpp sach.h
 muontra.o: muontra.cpp muontra.h docgia.h sach.h
-thongke.o: thongke.cpp thongke.h docgia.h sach.h muontra.h
+thongke.o: thongke.cpp thongke.h docgia.h sach.h muontra.h utils.h
+utils.o: utils.cpp utils.h

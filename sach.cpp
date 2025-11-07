@@ -1,4 +1,5 @@
 #include "sach.h"
+#include "utils.h"
 
 // Định nghĩa mảng toàn cục cho sách
 string ISBN[MAX_SACH];
@@ -25,9 +26,9 @@ void menuSach() {
     cout << "6. Tim sach theo ten" << endl;
         cout << "0. Quay lai menu chinh" << endl;
         cout << "=========================" << endl;
-        cout << "Nhap lua chon: ";
-        cin >> luaChon;
-        cin.ignore();
+    cout << "Nhap lua chon: ";
+    cin >> luaChon;
+    discardLine();
         
         switch(luaChon) {
             case 1:
@@ -53,8 +54,7 @@ void menuSach() {
                 break;
             default:
                 cout << "Lua chon khong hop le!" << endl;
-                cout << "Nhan Enter de tiep tuc...";
-                cin.ignore();
+                waitForEnter();
         }
     } while(luaChon != 0);
 }
@@ -74,8 +74,7 @@ void xemDanhSachSach() {
         }
     }
     
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
+    waitForEnter();
 }
 
 // Thêm sách mới vào thư viện
@@ -85,8 +84,7 @@ void themSach() {
     
     if(soLuongSach >= MAX_SACH) {
         cout << "Thu vien da day! Khong the them sach moi." << endl;
-        cout << "Nhan Enter de tiep tuc...";
-        cin.ignore();
+    waitForEnter();
         return;
     }
     
@@ -115,16 +113,18 @@ void themSach() {
     
     cout << "Nhap nam xuat ban: ";
     cin >> nam;
-    cin.ignore();
+    discardLine();
     
     cout << "Nhap the loai: ";
     getline(cin, theLoaiInput);
     
     cout << "Nhap gia sach: ";
     cin >> gia;
-    
+    discardLine();
+
     cout << "Nhap so quyen: ";
     cin >> soQuyenInput;
+    discardLine();
     
     ISBN[soLuongSach] = isbnInput;
     tenSach[soLuongSach] = ten;
@@ -138,9 +138,7 @@ void themSach() {
     soLuongSach++;
     
     cout << "Them sach thanh cong!" << endl;
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
-    cin.ignore();
+    waitForEnter();
 }
 
 // Chỉnh sửa thông tin sách theo ISBN
@@ -155,8 +153,7 @@ void chinhSuaSach() {
     int index = timViTriSach(isbnInput);
     if(index == -1) {
         cout << "Khong tim thay sach co ISBN: " << isbnInput << endl;
-        cout << "Nhan Enter de tiep tuc...";
-        cin.ignore();
+    waitForEnter();
         return;
     }
     
@@ -195,8 +192,7 @@ void chinhSuaSach() {
     if(!input.empty()) soQuyen[index] = stoi(input);
     
     cout << "Cap nhat thong tin thanh cong!" << endl;
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
+    waitForEnter();
 }
 
 // Xóa sách khỏi thư viện theo ISBN
@@ -240,9 +236,7 @@ void xoaSach() {
         cout << "Huy bo thao tac xoa." << endl;
     }
     
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
-    cin.ignore();
+    waitForEnter();
 }
 
 // Tìm sách theo mã ISBN chính xác
@@ -262,8 +256,7 @@ void timSachTheoISBN() {
         cout << "Khong tim thay sach co ISBN: " << isbnTimKiem << endl;
     }
     
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
+    waitForEnter();
 }
 
 // Tìm sách theo tên (tìm kiếm gần đúng)
@@ -289,12 +282,9 @@ void timSachTheoTen() {
         cout << "Khong tim thay sach co ten chua: " << tenTimKiem << endl;
     }
     
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
+    waitForEnter();
 }
 
-// Tìm sách theo tác giả (tìm kiếm gần đúng)
-// (Tìm sách theo tác giả đã bị loại bỏ theo yêu cầu)
 
 // Tìm vị trí của sách trong mảng theo ISBN, trả về -1 nếu không tìm thấy
 int timViTriSach(string isbnInput) {

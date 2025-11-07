@@ -1,4 +1,5 @@
 #include "muontra.h"
+#include "utils.h"
 #include <cstdio>
 
 
@@ -53,9 +54,9 @@ void menuMuonTra() {
         cout << "3. Xem danh sach phieu muon" << endl;
         cout << "0. Quay lai menu chinh" << endl;
         cout << "=========================" << endl;
-        cout << "Nhap lua chon: ";
-        cin >> luaChon;
-        cin.ignore();
+    cout << "Nhap lua chon: ";
+    cin >> luaChon;
+    discardLine();
         
         switch(luaChon) {
             case 1:
@@ -72,8 +73,7 @@ void menuMuonTra() {
                 break;
             default:
                 cout << "Lua chon khong hop le!" << endl;
-                cout << "Nhan Enter de tiep tuc...";
-                cin.ignore();
+                waitForEnter();
         }
     } while(luaChon != 0);
 }
@@ -84,8 +84,7 @@ void muonSach() {
     
     if(soLuongPhieu >= MAX_PHIEU) {
         cout << "He thong da day!" << endl;
-        cout << "Nhan Enter de tiep tuc...";
-        cin.ignore();
+        waitForEnter();
         return;
     }
     
@@ -96,8 +95,7 @@ void muonSach() {
     
     if(timViTriDocGia(maDocGiaInput) == -1) {
         cout << "Khong tim thay doc gia!" << endl;
-        cout << "Nhan Enter de tiep tuc...";
-        cin.ignore();
+        waitForEnter();
         return;
     }
     
@@ -106,8 +104,7 @@ void muonSach() {
     
     if(!kiemTraSachCoSan(isbnInput)) {
         cout << "Sach khong co san!" << endl;
-        cout << "Nhan Enter de tiep tuc...";
-        cin.ignore();
+        waitForEnter();
         return;
     }
     
@@ -128,8 +125,7 @@ void muonSach() {
     
     cout << "Muon sach thanh cong!" << endl;
     cout << "Ma phieu: " << maPhieu << endl;
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
+    waitForEnter();
 }
 
 void traSach() {
@@ -151,33 +147,70 @@ void traSach() {
     if(index == -1) {
         cout << "Khong tim thay phieu muon!" << endl;
         cout << "Nhan Enter de tiep tuc...";
-        cin.ignore();
+        {
+            string _tmp;
+            getline(cin, _tmp); // cho nguoi dung bam Enter va tranh con sot trong buffer
+        }
         return;
     }
     
-    string ngayTraInput;
-    cout << "Nhap ngay tra (dd/mm/yyyy): ";
-    getline(cin, ngayTraInput);
-    ngayTraThucTe[index] = ngayTraInput;
-    tangSoLuongSach(ISBNMuon[index]);
-    
-    float tienPhat = tinhTienPhat(ngayTraDuKien[index], ngayTraInput);
+    // Hỏi người dùng xem là trả sách hay báo mất
+    cout << "1. Tra sach thong thuong" << endl;
+    cout << "2. Bao mat sach" << endl;
+    cout << "Chon (1/2): ";
+    int luaChonTra = 1;
+    cin >> luaChonTra;
+    discardLine();
 
-    // Tính số ngày trễ để hiển thị chi tiết
-    int soNgayDuKien = parseNgayThanhSoNgay(ngayTraDuKien[index]);
-    int soNgayThucTe = parseNgayThanhSoNgay(ngayTraInput);
-    int soNgayTre = 0;
-    if(soNgayThucTe > soNgayDuKien) soNgayTre = soNgayThucTe - soNgayDuKien;
+    if(luaChonTra == 1) {
+        // Trả sách bình thường
+        string ngayTraInput;
+        cout << "Nhap ngay tra (dd/mm/yyyy): ";
+        getline(cin, ngayTraInput);
+        ngayTraThucTe[index] = ngayTraInput;
+        tangSoLuongSach(ISBNMuon[index]);
 
-    cout << "Tra sach thanh cong!" << endl;
-    if(soNgayTre > 0) {
-        cout << "So ngay tre: " << soNgayTre << " ngay" << endl;
-        cout << "Tien phat: " << soNgayTre << " x 5000 VND = " << tienPhat << " VND" << endl;
+        float tienPhat = tinhTienPhat(ngayTraDuKien[index], ngayTraInput);
+
+        // Tính số ngày trễ để hiển thị chi tiết
+        int soNgayDuKien = parseNgayThanhSoNgay(ngayTraDuKien[index]);
+        int soNgayThucTe = parseNgayThanhSoNgay(ngayTraInput);
+        int soNgayTre = 0;
+        if(soNgayThucTe > soNgayDuKien) soNgayTre = soNgayThucTe - soNgayDuKien;
+
+        cout << "Tra sach thanh cong!" << endl;
+        if(soNgayTre > 0) {
+            cout << "So ngay tre: " << soNgayTre << " ngay" << endl;
+            cout << "Tien phat: " << soNgayTre << " x 5000 VND = " << tienPhat << " VND" << endl;
+        } else {
+            cout << "Khong co tien phat." << endl;
+        }
+        waitForEnter();
+    } else if(luaChonTra == 2) {
+        // Báo mất sách: phạt 200% giá sách
+        string ngayBaoMat;
+        cout << "Nhap ngay bao mat (dd/mm/yyyy): ";
+        getline(cin, ngayBaoMat);
+        ngayTraThucTe[index] = ngayBaoMat; // lưu ngày báo mất
+
+        int idxSach = timViTriSach(ISBNMuon[index]);
+        float fine = 0.0f;
+        if(idxSach != -1) {
+            fine = 2.0f * giaSach[idxSach]; // 200% giá sách
+        }
+
+        int idxDocGia = timViTriDocGia(maDocGiaMuon[index]);
+        if(idxDocGia != -1) {
+            tienNo[idxDocGia] += fine;
+        }
+
+        // Không tăng lại số lượng sách vì sách mất
+        cout << "Sach da duoc bao mat. Doc gia bi phat: " << fine << " VND (200% gia sach)" << endl;
+        waitForEnter();
     } else {
-        cout << "Khong co tien phat." << endl;
+        cout << "Lua chon khong hop le. Huy bo." << endl;
+        waitForEnter();
     }
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
 }
 
 void xemDanhSachPhieuMuon() {
@@ -192,8 +225,7 @@ void xemDanhSachPhieuMuon() {
         }
     }
     
-    cout << "Nhan Enter de tiep tuc...";
-    cin.ignore();
+    waitForEnter();
 }
 
 // Tính ngày trả dự kiến = ngày mượn + 7 ngày

@@ -19,6 +19,8 @@ extern string diaChi[MAX_DOCGIA];
 extern string ngayLapThe[MAX_DOCGIA];
 extern string ngayHetHan[MAX_DOCGIA];
 extern int soLuongDocGia;
+// Số tiền phạt / nợ của độc giả (VND)
+extern float tienNo[MAX_DOCGIA];
 
 // Khai báo các hàm quản lý độc giả
 
