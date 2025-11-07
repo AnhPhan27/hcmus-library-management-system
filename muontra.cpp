@@ -149,7 +149,7 @@ void traSach() {
         cout << "Nhan Enter de tiep tuc...";
         {
             string _tmp;
-            getline(cin, _tmp); // cho nguoi dung bam Enter va tranh con sot trong buffer
+            getline(cin, _tmp);
         }
         return;
     }

@@ -312,6 +312,5 @@ void hienThiThongTinDocGia(int index) {
     cout << "Dia chi: " << diaChi[index] << endl;
     cout << "Ngay lap the: " << ngayLapThe[index] << endl;
     cout << "Ngay het han: " << ngayHetHan[index] << endl;
-    cout << "Tien no/phat: " << tienNo[index] << " VND" << endl;
     cout << "--------------------------------" << endl;
 }
